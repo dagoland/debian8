@@ -16,35 +16,19 @@
 #along with this program. If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------------
 #
-#### Sccript de instalação do MATE no Debian Wheezy ####
+#### Sccript de instalação do MATE no Debian jessie ####
 
 echo "Limpando a Sources.list da linha 1 a linha 20"
 
 sed -i '1,20d' /etc/apt/sources.list | more
 
-su -c "echo '#### Repósitório Debian Wheezy ####' >> /etc/apt/sources.list"
-su -c "echo 'deb http://http.debian.net/debian/ wheezy main contrib non-free' >> /etc/apt/sources.list"
-su -c "echo 'deb http://sft.if.usp.br/debian-security/ wheezy/updates main contrib non-free' >> /etc/apt/sources.list"
-su -c "echo 'deb http://http.debian.net/debian/ wheezy-updates main contrib non-free' >> /etc/apt/sources.list"
-su -c "echo 'deb http://http.debian.net/debian/ wheezy-backports main contrib non-free' >> /etc/apt/sources.list"
-
-#### Repositório MATE para Debian Wheezy ####
-
-sed -i '1,10d' /etc/apt/sources.list.d/mate-desktop.list | more 2> /dev/null
-
-su -c "echo '# main repository' >> /etc/apt/sources.list.d/mate-desktop.list"
-su -c "echo 'deb http://repo.mate-desktop.org/debian wheezy main' >> /etc/apt/sources.list.d/mate-desktop.list"
-su -c "echo '#' >> /etc/apt/sources.list.d/mate-desktop.list"
-su -c "echo '# mirrors' >> /etc/apt/sources.list.d/mate-desktop.list"
-su -c "echo 'deb http://packages.mate-desktop.org/repo/debian wheezy main' >> /etc/apt/sources.list.d/mate-desktop.list"
-su -c "echo 'deb http://mirror1.mate-desktop.org/debian wheezy main' >> /etc/apt/sources.list.d/mate-desktop.list"
-su -c "echo '#' >> /etc/apt/sources.list.d/mate-desktop.list"
-su -c "echo '# main repository' >> /etc/apt/sources.list.d/mate-desktop.list"
-su -c "echo 'deb http://repo.mate-desktop.org/archive/1.8/debian/ wheezy main' >> /etc/apt/sources.list.d/mate-desktop.list"
+su -c "echo '#### Repósitório Debian jessie ####' >> /etc/apt/sources.list"
+su -c "echo 'deb http://http.debian.net/debian/ jessie main contrib non-free' >> /etc/apt/sources.list"
+su -c "echo 'deb http://sft.if.usp.br/debian-security/ jessie/updates main contrib non-free' >> /etc/apt/sources.list"
+su -c "echo 'deb http://http.debian.net/debian/ jessie-updates main contrib non-free' >> /etc/apt/sources.list"
+su -c "echo 'deb http://http.debian.net/debian/ jessie-backports main contrib non-free' >> /etc/apt/sources.list"
 
 apt-get update
-
-apt-get --yes --quiet --allow-unauthenticated install mate-archive-keyring -y --force-yes
 
 apt-get update; apt-get dist-upgrade -y --force-yes
 
